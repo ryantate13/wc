@@ -1,5 +1,5 @@
 PROJECTS := $(shell find . -type f -name Dockerfile | xargs -n 1 dirname | xargs -n 1 basename | sort)
-SEP := ====================
+SEP := ================
 
 images:
 	@for p in $(PROJECTS); do \
@@ -12,7 +12,7 @@ images/ls:
 run:
 	@for p in $(PROJECTS); do \
 		echo $(SEP); \
-		echo $$p | tr '[:lower:]' '[:upper:]'; \
+		echo $$p; \
 		echo $(SEP); \
 		time (seq 1 1000000 | sudo docker run --rm -i wc:$$p > /dev/null) 2>&1; \
 		echo ''; \

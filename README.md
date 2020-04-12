@@ -24,69 +24,69 @@ make run
 #### Outputs
 
 ```text
-====================
+================
 c
-====================
+================
 
-real	0m1.512s
-user	0m0.144s
-sys	0m0.104s
+real    0m1.637s
+user    0m0.113s
+sys     0m0.089s
 
-====================
+================
 cpp
-====================
+================
 
-real	0m1.466s
-user	0m0.101s
-sys	0m0.071s
+real    0m1.672s
+user    0m0.137s
+sys     0m0.117s
 
-====================
+================
 d
-====================
+================
 
-real	0m2.019s
-user	0m0.147s
-sys	0m0.093s
+real    0m2.122s
+user    0m0.168s
+sys     0m0.113s
 
-====================
+================
 go
-====================
+================
 
-real	0m1.623s
-user	0m0.124s
-sys	0m0.105s
+real    0m1.685s
+user    0m0.112s
+sys     0m0.069s
 
-====================
+================
 node
-====================
+================
 
-real	0m1.814s
-user	0m0.173s
-sys	0m0.090s
+real    0m2.104s
+user    0m0.145s
+sys     0m0.129s
 
-====================
+================
 php
-====================
+================
 
-real	0m5.934s
-user	0m0.143s
-sys	0m0.124s
+real    0m6.281s
+user    0m0.115s
+sys     0m0.101s
 
-====================
+================
 python
-====================
+================
 
-real	0m9.568s
-user	0m0.150s
-sys	0m0.104s
+real    0m7.753s
+user    0m0.158s
+sys     0m0.120s
 
-====================
+================
 rust
-====================
+================
 
-real	0m1.620s
-user	0m0.121s
-sys	0m0.108s
+real    0m1.815s
+user    0m0.177s
+sys     0m0.111s
 ```
 
 ## View Generated Image Sizes
@@ -96,15 +96,14 @@ make images/ls
 ```
 
 #### Outputs
-
 ```text
 REPOSITORY                    TAG                 IMAGE ID            CREATED                  SIZE
-wc                            c                   7dfcdac271b2        30 seconds ago           159kB
-wc                            cpp                 23e6bdd26d6e        28 seconds ago           7.04MB
-wc                            d                   7b18b7d1fb87        28 seconds ago           2.23MB
-wc                            go                  af2793bef73d        26 seconds ago           2.09MB
-wc                            node                3239c46bb841        18 seconds ago           34.3MB
-wc                            php                 cf3303a11285        13 seconds ago           13.1MB
-wc                            python              fd45aa4f36fb        2 seconds ago            58.5MB
-wc                            rust                a650f42e1223        Less than a second ago   2.92MB
+wc                            c                   1bcdbfc8e992        20 seconds ago           159kB
+wc                            cpp                 929662cb93fb        19 seconds ago           7.04MB
+wc                            d                   74352c9b9984        18 seconds ago           2.23MB
+wc                            go                  b7f223d3b0ce        16 seconds ago           2.09MB
+wc                            node                a6d729f01f11        9 seconds ago            32.9MB
+wc                            php                 7c2e0ad5da28        4 seconds ago            13.1MB
+wc                            python              6a916ad2ec4d        2 seconds ago            24.9MB
+wc                            rust                1fd17297e00d        Less than a second ago   2.92MB
 ```
