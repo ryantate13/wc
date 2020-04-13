@@ -22,4 +22,5 @@ void main() {
 			in_space = false;
 		}
     }
+    writeln(word_count);
 }
