@@ -1,3 +1,4 @@
+SHELL = bash
 PROJECTS := $(shell find . -type f -name Dockerfile | xargs -n 1 dirname | xargs -n 1 basename | sort)
 SEP := ================
 
@@ -14,7 +15,7 @@ run:
 		echo $(SEP); \
 		echo $$p; \
 		echo $(SEP); \
-		time (seq 1 1000000 | sudo docker run --rm -i wc:$$p > /dev/null) 2>&1; \
+		time (seq 1 1000000 | sudo docker run --rm -i wc:$$p) 2>&1; \
 		echo ''; \
 	done
 
