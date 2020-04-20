@@ -2,14 +2,20 @@ SHELL = bash
 PROJECTS := $(shell find . -type f -name Dockerfile | xargs -n 1 dirname | xargs -n 1 basename | sort)
 SEP := =================
 TEST_RUNS := $(subst _,,1_000_000)
+IMG := $(lastword $(subst /, ,$(MAKECMDGOALS)))
+STATS := sudo docker run --rm -v /var/run/docker.sock:/var/run/docker.sock wc:stats
+
+define \n
+
+
+endef
 
 images:
-	@for p in $(PROJECTS); do \
-		cd $$p; sudo docker build -t wc:$$p . || exit 1; cd -; \
-	done
+	@$(foreach p, $(PROJECTS), \
+		cd $(p) && sudo docker build -t wc:$(p) . $(\n) \
+	)
 
 images/%:
-	$(eval IMG := $(subst images/,,$@))
 	@cd $(IMG) && sudo docker build -t wc:$(IMG) .
 
 images/ls:
@@ -24,13 +30,20 @@ run:
 		echo ''; \
 	done
 
-run/%:
-	$(eval IMG := $(subst run/,,$@))
-	@make images/$(IMG) > /dev/null
+run/%: images/$(IMG)
 	@echo $(SEP)
 	@echo $(IMG)
 	@echo $(SEP)
 	@time (seq 1 $(TEST_RUNS) | sudo docker run --rm -i wc:$(IMG)) 2>&1
 	@echo ''
 
-.PHONY: images images/% images/ls run run/%
+stats: stats/img
+	@$(STATS) $(PROJECTS) | tee stats.json
+
+stats/img:
+	sudo docker build -t $(lastword $(STATS)) -f stats.dockerfile .
+
+stats/%: images/$(IMG) stats/img
+	@$(STATS) $(IMG)
+
+.PHONY: $(shell grep -P '^[a-z/%]+:' Makefile | cut -d: -f 1)

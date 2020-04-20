@@ -2,5 +2,9 @@ c/wc
 cpp/wc
 d/wc
 d/wc.o
-rust/wc
 go/wc
+nim/wc
+python/wc.build
+python/wc.dist
+rust/wc
+stats.json
