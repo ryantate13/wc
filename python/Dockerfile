@@ -4,7 +4,7 @@ RUN pip3 install nuitka
 RUN mkdir /app
 COPY wc.py /app/wc.py
 WORKDIR /app
-RUN nuitka3 --standalone wc.py
+RUN nuitka3 --standalone --python-flag=no_site wc.py
 
 FROM alpine
 COPY --from=build /app/wc.dist /app
